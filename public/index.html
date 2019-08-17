@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>memo</title>
   </head>
   <body>
@@ -13,5 +12,21 @@
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
+    <script>
+        //for parent web
+        //to adjust the height of iframe
+        if (window.top !== window) {
+            document.domain = "rainbowyang.moe" // for cross origin
+            let el = document.body
+            let append = 30
+            let lastHeight = el.scrollHeight
+            window.setInterval(() => {
+                if (lastHeight !== el.scrollHeight) {
+                    lastHeight = el.scrollHeight
+                    window.top.document.getElementById("bookcase").height = lastHeight + append
+                }
+            }, 20)
+        }
+    </script>
   </body>
 </html>
