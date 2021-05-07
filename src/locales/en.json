@@ -21,5 +21,7 @@
   "AddSth": "Add something new here",
   "Save": "Save",
   "Cancel": "Cancel",
+  "localeTitle": "  <i>{0}</i>",
+  "tips": "All data is stored locally",
   "message": "hello i18n !!"
 }

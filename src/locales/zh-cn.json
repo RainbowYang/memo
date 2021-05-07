@@ -24,5 +24,7 @@
   "Title": "名称",
   "Save": "保存",
   "Cancel": "取消",
+  "localeTitle": "《{0}》",
+  "tips": "所有数据都是本地存储",
   "message": "你好 i18n !!"
 }

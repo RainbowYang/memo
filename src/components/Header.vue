@@ -1,7 +1,13 @@
 <template>
   <el-header id="header">
     <div id="title">
-      {{ $t('Progress Manager') }}
+      <span>
+        {{ $t('Progress Manager') }}
+      </span>
+      <el-tooltip class="item" effect="dark" :content="$t('tips')" placement="bottom-start">
+        <i class="el-icon-info"></i>
+      </el-tooltip>
+
     </div>
     <LocaleChanger/>
   </el-header>
@@ -24,7 +30,7 @@ export default {
   justify-content: space-around;
 }
 
-#title {
+#title span {
   font-size: 36px;
   text-align: center;
 }

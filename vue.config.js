@@ -1,5 +1,4 @@
 module.exports = {
-  publicPath: 'memo',
   pluginOptions: {
     i18n: {
       locale: 'en',

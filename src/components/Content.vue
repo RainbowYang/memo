@@ -9,7 +9,9 @@
             <el-collapse accordion style="min-height: 300px">
               <el-collapse-item v-for="item in filterItems" :key="item.title">
                 <template #title>
-                  <el-tag class="el-icon-menu"> {{ item.title.toUpperCase() }}</el-tag>
+                  <el-tag :class="typedIcon">
+                    <span v-html="$t('localeTitle', [item.title])"/>
+                  </el-tag>
                 </template>
                 <Item :item="item"></Item>
               </el-collapse-item>
@@ -46,11 +48,7 @@ export default {
   created () {
     this.items = localStorage.getItem('items') ?
         JSON.parse(localStorage.getItem('items'))
-        : [
-          { token: 0, title: 'To Do Test0', state: '0', type: 'book' },
-          { token: 1, title: 'To Do Test1', state: '0', type: 'book' },
-          { token: 2, title: 'Doing Test', state: '1', type: 'book', progress: 50 },
-        ]
+        : []
   },
   watch: {
     items (items) {
@@ -65,6 +63,16 @@ export default {
         type: this.activeType,
       }
     },
+    typedIcon () {
+      switch (this.activeType) {
+        case 'book':
+          return 'el-icon-notebook-2'
+        case 'movie':
+          return 'el-icon-video-camera'
+        default:
+          return ''
+      }
+    },
     filterItems () {
       return this.items.filter(({ type, state }) =>
           type === this.activeType && state === this.activeState)
@@ -72,10 +80,10 @@ export default {
   },
   methods: {
     addItem (item) {
-      this.items = [...this.items, { ...item, token: Date.now() }]
+      this.items = [...this.items, { ...item, time: Date.now() }]
     },
-    removeItem ({ token }) {
-      this.items = this.items.filter(item => item.token !== token)
+    removeItem ({ time }) {
+      this.items = this.items.filter(item => item.time !== time)
     },
     editItem (originItem, newItem) {
       this.removeItem(originItem)
