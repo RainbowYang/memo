@@ -1,4 +1,5 @@
 module.exports = {
+  publicPath: 'memo',
   pluginOptions: {
     i18n: {
       locale: 'en',
@@ -7,7 +8,7 @@ module.exports = {
       enableLegacy: true,
       runtimeOnly: false,
       compositionOnly: true,
-      fullInstall: true
-    }
-  }
+      fullInstall: true,
+    },
+  },
 }
